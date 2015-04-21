@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Latency Test</title>
+  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1">
+  <meta name="msapplication-tap-highlight" content="no">
+
+  <link rel="stylesheet" href="normalize.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <div role="main" class="main">
+    <div class="selector">
+      <label for="latency">Simulate latency</label>
+
+      <select name="latency" id="latency">
+        <option value="0" selected>0ms</option>
+        <option value="10">10ms</option>
+        <option value="16">16ms</option>
+        <option value="33">33ms</option>
+        <option value="50">50ms</option>
+        <option value="100">100ms</option>
+        <option value="200">200ms</option>
+        <option value="500">500ms</option>
+        <option value="1000">1s</option>
+      </select>
+    </div>
+
+    <div class="space">
+      <div class="box"></div>
+    </div>
+  </div>
+  <script src="bundle.js"></script>
+</body>
+</html>

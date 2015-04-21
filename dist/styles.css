@@ -1,0 +1,47 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+}
+
+.main {
+  height: 100vh;
+}
+
+.selector {
+  height: 60px;
+  padding-top: 20px;
+}
+
+.selector select {
+  margin-left: 1em;
+}
+
+.space {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  height: calc(100vh - 60px);
+}
+
+.box {
+  will-change: transform;
+  width: 100px;
+  height: 100px;
+  background-color: rgb(138, 208, 90);
+}
+
+.tapped {
+  background-color: rgb(208, 99, 90);
+}

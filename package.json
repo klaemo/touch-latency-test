@@ -1,10 +1,14 @@
 {
   "name": "touch-latency-test",
-  "version": "1.0.0",
+  "version": "0.0.0",
   "description": "Investigate acceptable latencies for touch input",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run -s watch & http-server ./dist",
+    "build": "browserify index.js > dist/bundle.js & autoprefixer dist/styles.css",
+    "watch": "watchify index.js -d -o dist/bundle.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "surge ./dist touch-latency.surge.sh"
   },
   "repository": {
     "type": "git",
@@ -15,5 +19,17 @@
   "bugs": {
     "url": "https://github.com/klaemo/touch-latency-test/issues"
   },
-  "homepage": "https://github.com/klaemo/touch-latency-test#readme"
+  "homepage": "https://github.com/klaemo/touch-latency-test#readme",
+  "dependencies": {
+    "fastclick": "^1.0.6",
+    "hammerjs": "^2.0.4",
+    "transform-style": "^0.1.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^5.1.1",
+    "browserify": "^9.0.8",
+    "chokidar-cli": "^0.2.0",
+    "http-server": "^0.8.0",
+    "watchify": "^3.1.2"
+  }
 }

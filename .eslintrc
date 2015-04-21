@@ -1,0 +1,18 @@
+{
+  "env": {
+    "browser": true
+  },
+  "rules": {
+    "strict": [ 2, "global" ],
+    "indent": [1, 2],
+    "semi": [ 1, "never" ],
+    "brace-style": [1, "1tbs"],
+    "space-before-blocks": [1, "always"],
+    "space-after-keywords": [1, "always"],
+    "no-spaced-func": [1],
+    "space-before-function-paren": [1, "never"]
+  },
+  "globals": {
+    "performance": true
+  }
+}
