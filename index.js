@@ -86,7 +86,9 @@ function onPan(ev) {
 // reset box
 hammertime.on('hammer.input', function(ev) {
   if (ev.isFinal) {
-    applyTransform(box, 'translateX(0) translateY(0)')
+    setTimeout(function() {
+      applyTransform(box, 'translateX(0) translateY(0)')
+    }, latency)
   }
 })
 
