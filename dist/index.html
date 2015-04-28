@@ -12,26 +12,41 @@
 
 <body>
   <div role="main" class="main">
-    <div class="selector">
-      <label for="latency">Simulate latency</label>
-
-      <select name="latency" id="latency">
-        <option value="0" selected>0ms</option>
-        <option value="10">10ms</option>
-        <option value="16">16ms</option>
-        <option value="33">33ms</option>
-        <option value="50">50ms</option>
-        <option value="100">100ms</option>
-        <option value="200">200ms</option>
-        <option value="500">500ms</option>
-        <option value="1000">1s</option>
-      </select>
+    <div class="description">
+      <strong class="action" data-hook="action"></strong>! - Test <span data-hook="step"></span> / 8
     </div>
-
     <div class="space">
       <div class="box"></div>
     </div>
+    <button type="button" data-hook="start" class="btn-start">Test beginnen</button>
+    <button type="button" data-hook="rate" class="btn-rate">Bewerten</button>
   </div>
+
+
+  <!-- Rating Modal -->
+  <div class="overlay">
+    <div class="rate-modal">
+      <h2>Die Interaktion war:</h2>
+      <form action="">
+        <fieldset>
+          <label for="bad">
+            <input type="radio" id="bad" name="rating" value="0">
+            schlecht
+          </label>
+          <label for="avg">
+            <input type="radio" id="avg" name="rating" value="1" checked>
+            akzeptabel
+          </label>
+          <label for="good">
+            <input type="radio" id="good" name="rating" value="2">
+            flüssig
+          </label>
+        </fieldset>
+        <button type="button" data-hook="next">Weiter</button>
+      </form>
+    </div>
+  </div>
+
   <script src="bundle.js"></script>
 </body>
 </html>
