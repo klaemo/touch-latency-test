@@ -1,10 +1,28 @@
 'use strict'
 
+// "fetch" global
+require('whatwg-fetch')
+
 var fastclick = require('fastclick')
 var Hammer = require('hammerjs')
 var applyTransform = require('transform-style')
 var shuffle = require('lodash.shuffle')
 var State = require('ampersand-state')
+
+var DBNAME = process.env.DBNAME || 'test'
+
+fetch('http://couch.klaemo.me:5984/_session', {
+  method: 'post',
+  credentials: 'include',
+  headers: {
+    'Accept': 'application/json',
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({
+    name: 'latency',
+    password: 'test-me'
+  })
+})
 
 var StudyState = State.extend({
   props: {
@@ -190,8 +208,19 @@ rateBtn.addEventListener('click', function(evt) {
 
 modal.querySelector('[data-hook=next]').addEventListener('click', function() {
   var result = modal.querySelector('input:checked').value
-  state.results.push({
-    action: state.action, rating: result, latency: state.latency, ua: state.ua
+
+  fetch('http://couch.klaemo.me:5984/' + DBNAME, {
+    method: 'post',
+    credentials: 'include',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      type: 'rating',
+      date: new Date().toISOString(),
+      action: state.action, rating: result, latency: state.latency, ua: state.ua
+    })
   })
 
   state.step++
@@ -200,8 +229,6 @@ modal.querySelector('[data-hook=next]').addEventListener('click', function() {
       state.action = 'drag'
       state.step = 0
     } else {
-      console.log(JSON.stringify(state.results))
-      console.log('done')
       state.clear()
     }
   }
