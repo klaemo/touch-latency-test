@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run -s watch & http-server ./dist",
-    "build": "browserify index.js > dist/bundle.js & autoprefixer dist/styles.css",
+    "build": "browserify index.js | uglifyjs -mc -o dist/bundle.js && autoprefixer dist/styles.css",
     "watch": "watchify index.js -d -o dist/bundle.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "surge ./dist touch-latency.surge.sh"
+    "deploy": "npm run -s build && surge ./dist touch-latency.surge.sh"
   },
   "repository": {
     "type": "git",
@@ -30,8 +30,8 @@
   "devDependencies": {
     "autoprefixer": "^5.1.1",
     "browserify": "^9.0.8",
-    "chokidar-cli": "^0.2.0",
     "http-server": "^0.8.0",
+    "uglify-js": "^2.4.20",
     "watchify": "^3.1.2"
   }
 }
