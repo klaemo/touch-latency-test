@@ -11,7 +11,7 @@ h2 {
 }
 
 .main {
-  height: 100vh;
+  height: 90vh;
 }
 
 .space {
@@ -27,7 +27,7 @@ h2 {
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
-  height: calc(100vh - 100px);
+  height: calc(90vh - 100px);
 }
 
 .description {
@@ -85,11 +85,20 @@ h2 {
 
 .rate-modal fieldset {
   margin-bottom: 1.5em;
+  padding: 1em;
 }
 
 .rate-modal label {
   display: block;
-  margin-top: 1em;
+  margin-top: 1.5em;
+}
+
+.rate-modal label:first-child {
+  margin-top: 0;
+}
+
+.rate-modal label > input {
+  margin: 0 0.5em;
 }
 
 button {
