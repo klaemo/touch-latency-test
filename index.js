@@ -1,7 +1,6 @@
 'use strict'
 
-// "fetch" global
-require('whatwg-fetch')
+var request = require('superagent')
 
 var fastclick = require('fastclick')
 var Hammer = require('hammerjs')
@@ -10,19 +9,6 @@ var shuffle = require('lodash.shuffle')
 var State = require('ampersand-state')
 
 var DBNAME = process.env.DBNAME || 'test'
-
-fetch('http://couch.klaemo.me:5984/_session', {
-  method: 'post',
-  credentials: 'include',
-  headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({
-    name: 'latency',
-    password: 'test-me'
-  })
-})
 
 var StudyState = State.extend({
   props: {
@@ -194,34 +180,31 @@ state.on('change:action', function(model, action) {
   renderDescription(action)
 })
 
-state.on('change:step', function(model, step) {
+state.on('change:step', function(model) {
   renderDescription(model.action)
 })
 
-startBtn.addEventListener('click', function(evt) {
+startBtn.addEventListener('click', function() {
   state.running = true
 })
 
-rateBtn.addEventListener('click', function(evt) {
+rateBtn.addEventListener('click', function() {
   modal.classList.add('show')
 })
 
 modal.querySelector('[data-hook=next]').addEventListener('click', function() {
   var result = modal.querySelector('input:checked').value
 
-  fetch('http://couch.klaemo.me:5984/' + DBNAME, {
-    method: 'post',
-    credentials: 'include',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
+  request.post('https://couch.klaemo.me:6984/' + DBNAME)
+    .auth('latency', 'test-me')
+    .set('Content-Type', 'application/json')
+    .set('Accept', 'application/json')
+    .send({
       type: 'rating',
       date: new Date().toISOString(),
       action: state.action, rating: result, latency: state.latency, ua: state.ua
     })
-  })
+    .end()
 
   state.step++
   if (state.step === state.latencies.length) {
