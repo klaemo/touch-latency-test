@@ -11,7 +11,15 @@ h2 {
 }
 
 .main {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
   height: 90vh;
+}
+
+.main > div {
+  width: 100%;
 }
 
 .space {
@@ -27,15 +35,13 @@ h2 {
   -webkit-justify-content: center;
       -ms-flex-pack: center;
           justify-content: center;
-  height: calc(90vh - 100px);
 }
 
 .description {
-  opacity: 0;
-  height: 40px;
   text-align: center;
   padding-top: 0.5em;
-  font-size: 18px;
+  font-size: 16px;
+  max-width: 800px;
 }
 
 .box {
@@ -108,5 +114,9 @@ button {
 }
 
 .btn-rate {
+  display: none;
+}
+
+.hide {
   display: none;
 }

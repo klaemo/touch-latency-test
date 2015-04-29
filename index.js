@@ -156,7 +156,8 @@ function renderDescription(action) {
   var type = action === 'tap' ? 'Box antippen' : 'Box ziehen'
   descr.textContent = type
   document.querySelector('[data-hook=step]').textContent = state.step + 1
-  document.querySelector('.description').style.opacity = state.running ? 1 : 0
+  document.querySelector('[data-hook=introduction]').classList.toggle('hide', state.running)
+  document.querySelector('[data-hook=help]').classList.toggle('hide', !state.running)
 }
 
 state.on('change:running', function(model, running) {

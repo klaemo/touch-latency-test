@@ -13,13 +13,22 @@
 <body>
   <div role="main" class="main">
     <div class="description">
-      <strong class="action" data-hook="action"></strong>! - Test <span data-hook="step"></span> / 8
+      <span class="introduction" data-hook="introduction">
+        Hallo! In den folgenden Tests sollst du die Box antippen oder herumziehen und dann bewerten wie gut die Interaktion war. Probiere zuerst aus, wie es sich anfühlt und beginne dann den Test!
+      </span>
+      <span class="help hide" data-hook="help">
+        <strong class="action" data-hook="action"></strong>! - Test <span data-hook="step"></span> / 8
+      </span>
     </div>
+
     <div class="space">
       <div class="box"></div>
     </div>
-    <button type="button" data-hook="start" class="btn-start">Test beginnen</button>
-    <button type="button" data-hook="rate" class="btn-rate">Bewerten</button>
+
+    <div>
+      <button type="button" data-hook="start" class="btn-start">Test beginnen</button>
+      <button type="button" data-hook="rate" class="btn-rate">Bewerten</button>
+    </div>
   </div>
 
 
